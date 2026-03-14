@@ -1,5 +1,19 @@
 import { useEffect } from "react";
 
+const Bounds = {
+  A: 65,
+  Z: 90,
+} as const;
+
+const SpecialKey = {
+  Enter: 'Enter',
+  Backspace: 'Backspace',
+} as const;
+
+const Limit      = 5;
+const EmptyValue = '.';
+const EmptyArray = Array(Limit).fill(EmptyValue);
+
 export default function App() {
 
   useEffect(() => {
