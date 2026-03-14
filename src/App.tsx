@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Bounds = {
   A: 65,
@@ -14,7 +14,12 @@ const Limit      = 5;
 const EmptyValue = '.';
 const EmptyArray = Array(Limit).fill(EmptyValue);
 
+const isEmptyValue = (l) => l === EmptyValue;
+const isNotEmptyValue = (l) => l !== EmptyValue;
+
 export default function App() {
+
+  const [ currentLetters, setCurrentLetters ] = useState(EmptyArray);
 
   useEffect(() => {
     const keydownHandler = (e: KeyboardEvent) => {
