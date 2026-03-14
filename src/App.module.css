@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+.tiles {
+    @apply flex gap-2;
+    @apply px-2 py-1;
+}
+
+.tile {
+    @apply flex justify-center;
+    @apply w-16 h-16 leading-15;
+    @apply bg-white;
+    @apply border-2 border-gray-300;
+    @apply text-3xl font-medium text-gray-500;
+}
