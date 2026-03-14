@@ -12,10 +12,18 @@ const SpecialKey = {
 } as const;
 
 const Limit      = 5;
-const EmptyValue = '.';
+const EmptyValue = '';
 const EmptyArray = Array(Limit).fill(EmptyValue);
 
 const isNotEmptyValue = (l) => l !== EmptyValue;
+
+const fillEmptyLetters = (newLetters: string[]) => {
+  newLetters.push(
+    ...Array(5 - newLetters.length).fill(EmptyValue) /* fill remaining values */
+  );
+
+  return newLetters;
+};
 
 export default function App() {
 
@@ -37,11 +45,7 @@ export default function App() {
                 .slice(0, -1) /* remove last item */
             ];
 
-            newLetters.push(
-              ...Array(5 - newLetters.length).fill(EmptyValue) /* fill remaining values */
-            );
-
-            return newLetters;
+            return fillEmptyLetters(newLetters);
           });
           break;
         // using keyCode is deprecated, will update later
@@ -55,11 +59,7 @@ export default function App() {
               e.key.toUpperCase()
             ];
 
-            newLetters.push(
-              ...Array(5 - newLetters.length).fill(EmptyValue) /* fill remaining values */
-            );
-
-            return newLetters;
+            return fillEmptyLetters(newLetters);
           });
 
           break;
