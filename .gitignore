@@ -1,0 +1,9 @@
+# Node modules
+node_modules
+
+# Compiled Source code
+dist
+
+# Editor directories and files
+.idea
+.DS_Store
