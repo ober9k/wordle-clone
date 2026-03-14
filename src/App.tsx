@@ -15,7 +15,6 @@ const Limit      = 5;
 const EmptyValue = '.';
 const EmptyArray = Array(Limit).fill(EmptyValue);
 
-const isEmptyValue = (l) => l === EmptyValue;
 const isNotEmptyValue = (l) => l !== EmptyValue;
 
 export default function App() {
@@ -30,10 +29,39 @@ export default function App() {
           break;
         case (e.key === SpecialKey.Backspace):
           console.log('[BACKSPACE] pressed...');
+
+          setCurrentLetters((currentLetters) => {
+            const newLetters = [
+              ...currentLetters
+                .filter(isNotEmptyValue)
+                .slice(0, -1) /* remove last item */
+            ];
+
+            newLetters.push(
+              ...Array(5 - newLetters.length).fill(EmptyValue) /* fill remaining values */
+            );
+
+            return newLetters;
+          });
           break;
         // using keyCode is deprecated, will update later
         case (e.keyCode >= Bounds.A && e.keyCode <= Bounds.Z):
           console.log("[" + e.key.toUpperCase() + "] pressed...");
+
+          setCurrentLetters((currentLetters) => {
+            const newLetters = [
+              ...currentLetters
+                .filter(isNotEmptyValue),
+              e.key.toUpperCase()
+            ];
+
+            newLetters.push(
+              ...Array(5 - newLetters.length).fill(EmptyValue) /* fill remaining values */
+            );
+
+            return newLetters;
+          });
+
           break;
       }
     };
