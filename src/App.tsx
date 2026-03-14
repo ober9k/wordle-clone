@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import classes from "./App.module.css";
 
 const Bounds = {
   A: 65,
@@ -36,6 +37,15 @@ export default function App() {
   return (
     <div>
       Wordle Clone
+      {Array(5).fill('').map((row, key) => (
+        <div className={classes.tiles} key={key}>
+          <div className={classes.tile}></div>
+          <div className={classes.tile}></div>
+          <div className={classes.tile}></div>
+          <div className={classes.tile}></div>
+          <div className={classes.tile}></div>
+        </div>
+      ))}
     </div>
   );
 }
